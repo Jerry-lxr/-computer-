@@ -41,13 +41,12 @@ while 1:
         Jindows-coin-installer 24MB        9
         语言选择器             10MB         10
         各种密码转换器         50MB         11
-        机器人使命召唤低配版   10KB          12
-        数字炸弹              2MB           13
+        数字炸弹              2MB           12
         '''
 
         COMPUTER_BIRTHDAY = '2024.3.17'
-        VERSION = '1.11.6.8(2025.5.18)至1.12.0(2025.X)过渡版'
-        LAST_CODE = '2025.5.18'
+        VERSION = '1.12.0(2025.7.19)'
+        LAST_CODE = '2025.7.19'
         #作弊部分, 0=False, 1=True
         EASY = [
             0,#加载加快
@@ -56,6 +55,20 @@ while 1:
             0#全部下载
         ]
         EASY = [1,1,0,0]
+        CHANGELOG = '''
+版本0.25时仅有计算题
+版本0.5更新了进度条
+版本1.7更新了电脑风格(中途没有将计算题联系在一起)
+版本1.7.24更新了日志
+版本1.8增加语言转换
+版本1.8.7可以修改PIN码以及退出登录
+版本1.9优化了代码
+版本1.10有很多小更新
+版本1.11(暂时)突破100KB!!!
+版本1.11.3支持Python3.6编译
+版本1.11.6更新了快捷键并简化了代码
+版本1.12.0完善应用
+将在版本1.12.10提供电脑端更多功能'''
 
         def set_equipment():
             global equipment
@@ -850,19 +863,6 @@ while 1:
                 return df
 #</为保证能网站间跳转而做的类>
 
-        CHANGELOG = '''
-版本0.25时仅有计算题
-版本0.5更新了进度条
-版本1.7更新了damn脑风格(中途没有将计算题联系在一起)
-版本1.7.24更新了日志
-版本1.8增加语言转换
-版本1.8.7可以修改PIN码以及退出登录
-版本1.9优化了代码
-版本1.10有很多小更新
-版本1.11暂时突破100KB!!!
-版本1.11.3支持Python3.6编译
-版本1.11.6更新了快捷键并简化了代码
-即将更新1.12(加入更多应用...其实是游戏)'''
         RJXX = {
             1:['我的电脑', '12.56MB', 12.56, 'Jindows', '用于查看您的电脑信息', ['连个F盘都没有', '关于C盘,D盘,E盘是只读这件事'], 5.0, '系统软件', 'wddn'],
             2:['JY瘤懒器', '999MB', 999, 'Jindows', '可以来搜索你的疑惑', ['没有无网游戏的浏览器不是浏览器!'], 2.0, '系统软件', 'jyllq'],
@@ -875,8 +875,7 @@ while 1:
             9:['Jindows-coin-installer', '24MB', 24, 'Jindows', 'Jindows选择性内置功能', ['还行吧'], 3.5, '安装向导', 'jindowscoininstaller'],
             10:['语言选择器', '10MB', 10, 'Jindows', 'Jindows选择性内置功能', ['用处不多'], 2.4, '额外设置', 'yyxzq'],
             11:['各种密码转换器', '50MB', 50, 'Jerry', '摩斯密码转换器', ['谁会用啊'], 2.0, '功能软件', 'gzmmzhq'],
-            12:['机器人使命召唤低配版', '10KB', 10/1024, 'Jerry', '使命召唤低配版', ['冷知识:10KB是因为不是你想的那个使命召唤'], 2.0, '游戏', 'jqrsmzhdpb'],
-            13:['数字炸弹', '2MB', 2, 'Jerry', 'Just a game', ['简单游戏做复杂'], 4.5, '游戏', 'szzd']}
+            12:['数字炸弹', '2MB', 2, 'Jerry', 'Just a game', ['简单游戏做复杂'], 4.5, '游戏', 'szzd']}
         HOW = '''
 "打开" 序号
 "卸载" 序号
@@ -911,7 +910,7 @@ root制造者:Jerry
 进度条制造者:Jerry
 写代码的人:Jerry
 贡献最多的人:Jerry'''
-        msmm_encode = {
+        MSMM_ENCODE = {
 'a':'.-'     , 'A':'.-'     ,
 'b':'-...'   , 'B':'-...'   ,
 'c':'-.-.'   , 'C':'-.-.'   ,
@@ -1259,7 +1258,7 @@ root制造者:Jerry
                             print(CHANGELOG)
                         elif all_instruction == '退出登录' or all_instruction == 'logout':
                             done = done2 = False
-                            if user_state == 'ainstructioninistrator':
+                            if user_state == 'administrator':
                                 computer = [zhuomian, Cmemory, Dmemory, Ememory, IsUserVIP, Jindows_coin_started, Jindows_coin, equipment, browse_history, real_browse_history, BIOS_password, Cpan, Dpan, Epan]
                         elif all_instruction == '下载' or all_instruction == 'download':
                             has_shop = False
@@ -1303,7 +1302,7 @@ root制造者:Jerry
                                         print(f'C盘:约{NCZH(Cpan_NC, 3, 3)[1]}{NCZH(Cpan_NC, 3, 3)[0]}{(longest-strlong[0])*" "}/{Cmemory[0]}{Cmemory[1]}')
                                         print(f'D盘:约{NCZH(Dpan_NC, 3, 3)[1]}{NCZH(Dpan_NC, 3, 3)[0]}{(longest-strlong[1])*" "}/{Dmemory[0]}{Dmemory[1]}')
                                         print(f'E盘:约{NCZH(Epan_NC+zhuomianNC, 3, 3)[1]}{NCZH(Epan_NC+zhuomianNC, 3, 3)[0]}{(longest-strlong[2])*" "}/{Ememory[0]}{Ememory[1]}')
-                                        choose = input('直接回车进行深度操作')
+                                        choose = input('直接回车进行更多操作')
                                         if choose == 'Alt F4':
                                             break
                                         if choose == '':
@@ -1331,7 +1330,6 @@ root制造者:Jerry
                                                 print('---小分割线---')
                                             del wddn_bool
                                     elif start_software == 'JY瘤懒器':
-                                        #跳转对应网站
                                         while 1:
                                             print_history = ''
                                             if browse_history == []:
@@ -1420,7 +1418,7 @@ root制造者:Jerry
                                         AD()
                                         Alt_F4 = False
                                         while not Alt_F4:
-                                            Problem = ['明明盲人没有瞎, 那为什么看不见', '是先有鸡还是先有蛋', '我一拳打倒了我自己, 我算强大还是脆弱', '为什么警察不去监狱抓人', '为什么烘手机不能把手机给烘了', '为什么冰箱是柜子冰柜是箱子', '站在电梯里为什么说我们坐电梯', '我们晒太阳为什么是太阳晒我们']
+                                            Problem = ['明明盲人没有瞎, 那为什么看不见', '是先有鸡还是先有蛋', '我一拳打倒了我自己, 那我算强大还是脆弱', '为什么警察不去监狱抓人', '为什么烘手机不能把手机烘了', '为什么冰箱是柜子,冰柜是箱子', '站在电梯里为什么说坐电梯', '太阳晒我们为什么说我们晒太阳']
                                             ask = input(f'请写上你的疑惑(比如:{choice(Problem)})(输入b退出)')
                                             if ask == 'b' or ask == 'Alt F4':
                                                 break
@@ -1432,7 +1430,8 @@ root制造者:Jerry
                                         choose = input('下载什么')
                                         if choose == 'Alt F4':
                                             break
-                                        download(choose)
+                                        if download(choose) == '下载成功':
+                                            display_desktop = True
                                     elif start_software == '设置':
                                         Jin_I()
                                     elif start_software == '回收站':
@@ -1475,7 +1474,7 @@ root制造者:Jerry
                                         sleep(randint(2, 4))
                                         if randint(1, 50)<10:
                                             class Jinecraft:
-                                                def NewUser(a:str='未登录用户'):#假装是我的世界代码导致内存溢出
+                                                def NewUser(a:str='未登录用户'):
                                                     System.wrong()#来自系统报错
                                             Jinecraft.NewUser('未登录用户')
                                     elif start_software == 'Jindows-coin-installer':
@@ -1483,7 +1482,7 @@ root制造者:Jerry
                                         if Jindows_coin_started:
                                             print('你已安装完成, 可以将此安装向导卸载')
                                             break
-                                        choose = input('直接回车下载')
+                                        choose = input('直接回车下载(安装路径:E:/desktop)')
                                         if choose == 'Alt F4':
                                             break
                                         elif choose == '':
@@ -1530,11 +1529,11 @@ root制造者:Jerry
                                                         break
                                                     output_msmm = ''
                                                     for jj in range(0, len(msmm)):
-                                                        output_msmm += msmm_encode[msmm[jj]] if msmm[jj] in list(msmm_encode) else msmm[jj]
+                                                        output_msmm += MSMM_ENCODE[msmm[jj]] if msmm[jj] in list(MSMM_ENCODE) else msmm[jj]
                                                         if not jj == len(msmm)-1:
-                                                            if not msmm[jj] in list(msmm_encode):
+                                                            if not msmm[jj] in list(MSMM_ENCODE):
                                                                 try:
-                                                                    if not msmm[jj+1] in list(msmm_encode):
+                                                                    if not msmm[jj+1] in list(MSMM_ENCODE):
                                                                         pass
                                                                     else:
                                                                         output_msmm += '/'
@@ -1550,7 +1549,7 @@ root制造者:Jerry
                                                     output_msmm = ''
                                                     for jj in range(0, len(msmm.split('/'))):
                                                         try:
-                                                            output_msmm += get_key(msmm_encode, msmm.split('/')[jj])
+                                                            output_msmm += get_key(MSMM_ENCODE, msmm.split('/')[jj])
                                                         except:
                                                             output_msmm += msmm.split('/')[jj]
                                                     print(f'解码后:{output_msmm}')
@@ -1558,95 +1557,6 @@ root制造者:Jerry
                                                     break
                                             else:
                                                 break
-                                    elif start_software == '机器人使命召唤低配版':
-                                        loading('正在匹配对局', randint(4, 10)/10)
-                                        SMZH_CFL = randint(30,80)#触发率:达到稳定率的概率
-                                        SMZH_WDL = int((100 - (SMZH_CFL * randint(6,13)/10)) // 1)#触发率越低,稳定率越高,反之一样
-                                        SMZH_CFL_F = randint(30,80)
-                                        SMZH_WDL_F = int((100 - (SMZH_CFL * randint(6,15)/10)) // 1)
-                                        if of100(SMZH_CFL):
-                                            if of100(SMZH_WDL):
-                                                SMZH_PERFECT = 'Perfect'
-                                                print('你搭得很完整')
-                                            else:
-                                                if of100(SMZH_WDL):
-                                                    SMZH_PERFECT = 'Normal'
-                                                    print('你搭得还行,有几率出错')
-                                                else:
-                                                    SMZH_PERFECT = 'Bad'
-                                                    print('你搭得很失败')
-                                        else:
-                                            if of100(100-SMZH_WDL):
-                                                SMZH_PERFECT = 'Perfect'
-                                                print('你搭得很完整')
-                                            else:
-                                                if of100(100-SMZH_WDL):
-                                                    SMZH_PERFECT = 'Normal'
-                                                    print('你搭得还行,有几率出错')
-                                                else:
-                                                    SMZH_PERFECT = 'Bad'
-                                                    print('你搭得很失败')
-                                        sleep(0.3)
-                                        if of100(SMZH_CFL_F):
-                                            if of100(SMZH_WDL_F):
-                                                SMZH_PERFECT_F = 'Perfect'
-                                                print('你队友搭得很完整')
-                                            else:
-                                                if of100(SMZH_WDL_F):
-                                                    SMZH_PERFECT_F = 'Normal'
-                                                    print('你队友搭得还行,有几率出错')
-                                                else:
-                                                    SMZH_PERFECT_F = 'Bad'
-                                                    print('你队友搭得很失败')
-                                        else:
-                                            if of100(100-SMZH_WDL_F):
-                                                SMZH_PERFECT_F = 'Perfect'
-                                                print('你队友搭得很完整')
-                                            else:
-                                                if of100(100-SMZH_WDL_F):
-                                                    SMZH_PERFECT_F = 'Normal'
-                                                    print('你队友搭得还行,有几率出错')
-                                                else:
-                                                    SMZH_PERFECT_F = 'Bad'
-                                                    print('你队友搭得很失败')
-                                        for SMZH_round in range(1,5):
-                                            sleep(0.8)
-                                            print(f'回合{SMZH_round}/4')
-                                            sleep(0.3)
-                                            if SMZH_PERFECT == 'Perfect':
-                                                print('自动环节很顺利')
-                                            elif SMZH_PERFECT == 'Normal':
-                                                if of100(SMZH_CFL):
-                                                    if of100(SMZH_WDL):
-                                                        print('虽然很差,但是还是很顺利')
-                                                    else:
-                                                        print('出界了')
-                                            else:
-                                                print('出界了')
-                                            sleep(0.3)
-                                            print('手动环节')
-                                            sleep(0.3)
-                                            if SMZH_PERFECT == 'Perfect' and SMZH_PERFECT_F == 'Perfect':
-                                                print('你赢了')
-                                            elif SMZH_PERFECT == 'Normal':
-                                                if of100(SMZH_CFL):
-                                                    print('你输了')
-                                                    break
-                                                else:
-                                                    print('你赢了')
-                                            else:
-                                                print('你输了')
-                                                break
-                                            if SMZH_round == 4:
-                                                SMZH_round = 5
-                                        if SMZH_round == 3:
-                                            print('获得三等奖')
-                                        elif SMZH_round == 4:
-                                            print('喜提二等奖')
-                                        elif SMZH_round == 5:
-                                            print('荣获一等奖')
-                                        else:
-                                            print('安慰奖')
                                     elif start_software == '数字炸弹':
                                         AD()
                                         playing = True
