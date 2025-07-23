@@ -7,7 +7,7 @@ from time import sleep,time
 include_list = 'time-sleep,time'
 
 print('正在加载...', end='\r')
-sleep(1)
+sleep(1.5)
 tip='进入前须知;1.此电脑非真实电脑,以模拟电脑为主旨;2.此电脑只用文字互动,通常情况下不用图片,以电脑游玩最佳,移动端将不能实现一些额外功能;3.此电脑的文件由python编译,请游玩前下载好python环境(其实没安装就看不到这个消息的);4.此电脑有第三方库colorama,如果要游玩请先确保是否安装该第三方库,如没有,就在终端输入 python -m pip install colorama;5.此游戏适合10+人群游玩;'
 for a in tip:
     print('\n' if a == ';' else a, end='', flush=True)
@@ -34,6 +34,7 @@ while 1:
         JY瘤懒魕              999MB         2
         deepthink         9.42MB          3
         应用商店                3MB         4
+        Joutlook邮箱
         设置                   1MB          5
         回收站                 2MB          6
         计算题                  1GB         7
@@ -65,10 +66,13 @@ while 1:
 版本1.9优化了代码
 版本1.10有很多小更新
 版本1.11(暂时)突破100KB!!!
-版本1.11.3支持Python3.6编译
 版本1.11.6更新了快捷键并简化了代码
 版本1.12.0完善应用
-将在版本1.12.10提供电脑端更多功能'''
+将在版本1.12.10完善应用功能'''
+        LOADING_EASY = EASY[0]
+        LOGIN_EASY = EASY[1]
+        MEMORY_EASY = EASY[2]
+        SOFTWARE_EASY = EASY[3]
 
         def set_equipment():
             global equipment
@@ -115,10 +119,6 @@ while 1:
                     return round(name*(1024**(how-1)), point)
                 return round(want/(1024**(want-how)), point)
 
-        LOADING_EASY = EASY[0]
-        LOGIN_EASY = EASY[1]
-        MEMORY_EASY = EASY[2]
-        SOFTWARE_EASY = EASY[3]
         def loading(title:str, fast=0):#加载
             global display_desktop
             global display_line
@@ -889,27 +889,11 @@ while 1:
 "桌面"'''
         EDITER = f'''
 主编:Jerry
-副编:snk
 灵感者:Jerry
 环境搭建:Python
 使用库:{include_list}
-副设备:Python编译器(mobile)
 主设备:VScode(computer)
-软件制造者:Jerry
-网站制造者:Jerry
-设置制造者:Jerry
-BIOS制造者:Jerry
-广告制造者:Jerry
-蓝屏制造者:Jerry
-root制造者:Jerry
-系统制造者:Jerry
-内存制造者:Jerry
-快捷键制造者:Jerry
-评论制造者:Jerry
-日志制造者:Jerry
-进度条制造者:Jerry
-写代码的人:Jerry
-贡献最多的人:Jerry'''
+'''
         MSMM_ENCODE = {
 'a':'.-'     , 'A':'.-'     ,
 'b':'-...'   , 'B':'-...'   ,
@@ -1206,7 +1190,8 @@ root制造者:Jerry
                         print(f'JY瘤懒器:今日开机时间{round(elapsed_time,1)}秒,超过了{randint(80,99)}.{randint(97,99)}%的人')
                         JY_influence = False
                     all_instruction = input('执行操作(输入how查看如何操作):')
-                    display_desktop = display_line = False
+                    display_desktop = True
+                    display_line = False
                     instruction = all_instruction.split(' ')
                     Successful = True
                     Wrong_Combo_temp = Wrong_Combo
@@ -1727,9 +1712,7 @@ root制造者:Jerry
     except SystemExit:
         dot = 1
         for a in range(20):
-            if dot == 6:
-                dot = 0
-            dot += 1
+            dot = 1 if dot == 6 else dot + 1
             print(Fore.WHITE + Back.BLUE + f'\r正在关机{dot * "."}{(6 - dot) * " "}', end='')
             sleep(0.3)
         print(Style.RESET_ALL, end='')
