@@ -11,7 +11,7 @@ sleep(1.5)
 tip='进入前须知;1.此电脑非真实电脑,以模拟电脑为主旨;2.此电脑只用文字互动,通常情况下不用图片,以电脑游玩最佳,移动端将不能实现一些额外功能;3.此电脑的文件由python编译,请游玩前下载好python环境(其实没安装就看不到这个消息的);4.此电脑有第三方库colorama,如果要游玩请先确保是否安装该第三方库,如没有,就在终端输入 python -m pip install colorama;5.此游戏适合10+人群游玩;'
 for a in tip:
     print('\n' if a == ';' else a, end='', flush=True)
-    sleep(0.04)
+    sleep(0.01)
 input('请阅读完后回车')
 enter_counter = 0
 while 1:
@@ -47,7 +47,7 @@ while 1:
 
         COMPUTER_BIRTHDAY = '2024.3.17'
         VERSION = '1.12.0(2025.7.19)'
-        LAST_CODE = '2025.7.19'
+        LAST_CODE = '2025.7.24'
         #作弊部分, 0=False, 1=True
         EASY = [
             0,#加载加快
@@ -234,7 +234,7 @@ while 1:
         def if_cannot_remove(a):#如果不可卸载
             return if_system_software(a)
 
-        def if_shortcuts(a):#如果是快捷键
+        def if_shortcuts(a):#如果是多字母键
             return a == 'Alt' or a == 'Tab' or a == 'Ctrl' or a == 'Jin' or a == 'Esc' or a == 'Space' or a == 'Del' or a == 'F1' or a == 'F2' or a == 'F3' or a == 'F4' or a == 'F5' or a == 'F6' or a == 'F7' or a == 'F8' or a == 'F9' or a == 'F10' or a == 'F11' or a == 'F12'
 
         def AD():#神秘小广告
@@ -318,11 +318,11 @@ while 1:
             if len(find) > 0:
                 for a in range(0, len(find)):
                     print(f'{a+1}.{RJXX[find[a]][0]}')
-                jj = input('从以上类似结果选一个')
-                if jj == 'Alt F4':
+                choice = input('从以上类似结果选一个')
+                if choice == 'Alt F4':
                     return 'Alt F4退出'
                 try:
-                    if jj == '全部下载' or jj == 'all':
+                    if choice == '全部下载' or choice == 'all':
                         for a in range(0, len(find)):
                             bl = {}
                             for jjjj in zhuomian:
@@ -336,32 +336,32 @@ while 1:
                                 print(RJXX[find[a]][0]+'因内存不足无法下载')
                             else:
                                 loading('正在下载'+RJXX[find[a]][0], randint(7, 10)/8)
-                                zhuomian[len(zhuomian)+1] = [RJXX[find[a]][0], RJXX[find[a]][2], RJXX[find[a]][0], 0]
+                                zhuomian[len(zhuomian)+1] = [RJXX[find[a]][0], RJXX[find[a]][2], 0, RJXX[find[a]][0], 0]
                         return '下载成功'
                     else:
-                        jj = int(jj)
-                        print(f'软件名:{RJXX[find[jj-1]][0]}')
-                        print(f'占用内存:{RJXX[find[jj-1]][1]}')
-                        print(f'作者:{RJXX[find[jj-1]][3]}')
-                        print(f'软件简介:{RJXX[find[jj-1]][4]}')
-                        print(f'评论(其中一个):{RJXX[find[jj-1]][5][randint(0,len(RJXX[find[jj-1]][5])-1)]}')
-                        print(f'评价(满分5.0):{RJXX[find[jj-1]][6]}')
-                        print(f'类别:{RJXX[find[jj-1]][7]}')
+                        choice = int(choice)
+                        print(f'软件名:{RJXX[find[choice-1]][0]}')
+                        print(f'占用内存:{RJXX[find[choice-1]][1]}')
+                        print(f'作者:{RJXX[find[choice-1]][3]}')
+                        print(f'软件简介:{RJXX[find[choice-1]][4]}')
+                        print(f'评论(其中一个):{RJXX[find[choice-1]][5][randint(0,len(RJXX[find[choice-1]][5])-1)]}')
+                        print(f'评价(满分5.0):{RJXX[find[choice-1]][6]}')
+                        print(f'类别:{RJXX[find[choice-1]][7]}')
                         choose = input('直接回车即可下载, 否则退出')
                         if choose == 'Alt F4':
                             return 'Alt F4退出'
                         if choose == '':
                             for jjjj in zhuomian:
-                                if RJXX[find[jj-1]][0] == zhuomian[jjjj][0]:
+                                if RJXX[find[choice-1]][0] == zhuomian[jjjj][0]:
                                     print('已下载过!')
                                     return '下载失败'
                             Get_zhuomianNC()
-                            if NCXG(zhuomianNC, 3, 1, 4)+NCXG(RJXX[find[jj-1]][2], 3, 1, 4)>NCXG(Ememory[0], Ememory[2], 1, 4):
+                            if NCXG(zhuomianNC, 3, 1, 4)+NCXG(RJXX[find[choice-1]][2], 3, 1, 4)>NCXG(Ememory[0], Ememory[2], 1, 4):
                                 print('内存不足')
                                 return '下载失败'
                             else:
-                                loading('正在下载'+RJXX[find[jj-1]][0], randint(7, 8)/10)
-                                zhuomian[len(zhuomian)+1] = [RJXX[find[jj-1]][0], RJXX[find[jj-1]][2], RJXX[find[jj-1]][0], 0]
+                                loading('正在下载'+RJXX[find[choice-1]][0], randint(7, 8)/10)
+                                zhuomian[len(zhuomian)+1] = [RJXX[find[choice-1]][0], RJXX[find[choice-1]][2], 0, RJXX[find[choice-1]][0], 0]
                                 return '下载成功'
                 except:
                     print(Fore.RED + '回答不符合标准' + Fore.RESET)
@@ -610,20 +610,19 @@ while 1:
         #如果出现def其它(例如seek), 代表你无法输入XXXX.XX.seek来查看
         #目前正在不思考怎么做斜杠(/)分割
         #
-        class JerryHK():
+        class developer():
             def seek():
                 return '可以使用'
             def cn():
-                print(Fore.YELLOW + '系统:请注意, 你打开的是未经该电脑审核的网站' + Fore.RESET)
-                print(f'--{COMPUTER_NAME}的黑客系统--')
+                print(f'--{COMPUTER_NAME}开发者模式--')
                 while 1:
-                    URL_HK_code = input('输入黑客代码')
+                    URL_HK_code = input('输入代码')
                     if URL_HK_code == 'Alt F4':
                         return 'Alt F4退出'
                     URL_HK_dm = URL_HK_code.split(' ')
                     for j in range(10):
                         URL_HK_dm.append('')
-                    if URL_HK_code == '桌面':
+                    if URL_HK_code == 'desktop':
                         print(zhuomian)
                     elif URL_HK_code == 'exit':
                         break
@@ -642,10 +641,10 @@ while 1:
                 def seek():
                     return '可以使用'
                 def cn():
-                    WORK = [['coin增加器', 'Jindows官方'], ['尝试卡爆', 'Jerry'], ['凑数用的2', 'Jerry'], ['凑数用的3', 'Jerry'], ['凑数用的4', 'Jerry']]
+                    WORK = [['coin增加器', 'Jindows官方'], ['尝试卡爆', '无名氏']]
                     printwork = []
                     print('精选:')
-                    for a in range(5):
+                    for a in range(2):
                         b = WORK[randint(0, len(WORK)-1)]
                         while b in printwork:
                             b = WORK[randint(0, len(WORK)-1)]
@@ -941,14 +940,13 @@ while 1:
 "'":'.----.' , '‘':'.----.' , '’':'.----.' ,
 '"':'.-..-.' , '“':'.-..-.' , '”':'.-..-.' ,
 ':':'---...' , '：':'---...',
-';':'-.-.-.' , '；':'-.-.-.'
-}
+';':'-.-.-.' , '；':'-.-.-.'}
         equipment = 'unknow'
         set_equipment()
         COMPUTER_NAME = 'Jerry超级无敌螺旋升天不好用到爆炸且吸收日月精华24年的废物二手电脑Ultra-Max-Pro+-Mini-Mate-Nova-Note-Neo-Mix-Reno-GT-A-C-T-SE'
         fn = sn = 24
         user_state = 'administrator'
-        default_zhuomian = {1:['我的电脑', 12.56, '我的电脑', 0], 2:['JY瘤懒器', 999, 'JY瘤懒器', 0], 3:['deepthink', 9.42, 'deepthink', 0], 4:['应用商店', 3, '应用商店', 0], 5:['设置', 1, '设置', 0], 6:['回收站', 0, '回收站', 0]}
+        default_zhuomian = {1:['我的电脑', 12.56, 0, '我的电脑', 0], 2:['JY瘤懒器', 999, 0,'JY瘤懒器', 0], 3:['deepthink', 9.42, 0,'deepthink', 0], 4:['应用商店', 3, 0,'应用商店', 0], 5:['设置', 1, 0,'设置', 0], 6:['回收站', 0, 0,'回收站', 0]}
         zhuomian = default_zhuomian
         done2 = True
         username = ''
@@ -981,23 +979,7 @@ while 1:
                         print('你需要有一个原账号')
                         login_ask == 'a'
                     else:
-                        print('不想做虚拟机了, bug比文件管理的bug还多')
-                        '''username = ''
-                        PINpassword = [24, '用户114514']
-                        jdtpf = ['!', '?']
-                        BIOS_password = ''
-                        memory = [1024, 'GB', 4]
-                        user_state = 'virtual'
-                        Cpan = {'System':{'code':{'about':'ЈΕſſΥ', 'occupy':24}}}
-                        Dpan = {}
-                        Epan = {'desktop':[]}
-                        IsUserVIP = '零氪'
-                        printstyle = '正常'
-                        zhuomian_list = []
-                        for j in zhuomian:
-                            zhuomian_list.append(zhuomian[j])
-                        Epan = {'desktop':zhuomian_list}
-                        break'''
+                        print('别想了,怎么可能把虚拟机做出来')
                 if login_ask == 'a':
                     if LOGIN_EASY:
                         print(Back.BLUE+Fore.WHITE,end='')
@@ -1024,52 +1006,6 @@ while 1:
                     if PINpassword[0] == 24:
                         print('您的账号因长时间未登录, 需要填入该账号的信息')
                     reply = input('请输入pin码')
-                    '''if reply == '754933482':
-                        username = 'Jerry'
-                        print('账号名:Jerry')
-                        print('权限:作者')
-                        Cmemory = [100, 'TB', 5]
-                        Dmemory = [100, 'TB', 5]
-                        Ememory = [100, 'TB', 5]
-                        zhuomian = default_zhuomian
-                        for a in RJXX:
-                            simplify = RJXX[a][0]
-                                if simplify == '我的电脑' or simplify == 'JY瘤懒器' or simplify == 'deepsthink' or simplify == '应用商店':
-                                    continue
-                                zhuomian[len(zhuomian)+1] = [RJXX[a][0], RJXX[a][2], RJXX[a][0], 0]
-                        IsUserVIP = '至尊永久VIP'
-                        loading('首次启动ing', randint(2, 5)/24)
-                        user_state == 'administrator'
-                        Cpan = {'System':{'code':{'about':'ЈΕſſΥ', 'occupy':24}}}
-                        Dpan = {}
-                        Epan = {'desktop':[]}
-                        printstyle = '正常'
-                        zhuomian_list = []
-                        for j in zhuomian:
-                            zhuomian_list.append(zhuomian[j])
-                        Epan = {'desktop':zhuomian_list}
-                        break
-                    elif reply == '611739633':
-                        username = '一只小鲨『Fun』'
-                        print('账号名:一只小鲨『Fun』')
-                        print('权限:作者小学朋友')
-                        Cmemory = [24, 'TB', 5]
-                        Dmemory = [24, 'TB', 5]
-                        Ememory = [24, 'TB', 5]
-                        zhuomian = default_zhuomian
-                        loading('首次启动ing', randint(8, 24)/24)
-                        IsUserVIP = '至尊永久VIP'
-                        user_state == 'administrator'
-                        Cpan = {'System':{'code':{'about':'ЈΕſſΥ', 'occupy':24}}}
-                        Dpan = {}
-                        Epan = {'desktop':[]}
-                        printstyle = '正常'
-                        zhuomian_list = []
-                        for j in zhuomian:
-                            zhuomian_list.append(zhuomian[j])
-                        Epan = {'desktop':zhuomian_list}
-                        break
-                    el'''
                     if reply == PINpassword[0]:
                         print('账号名:'+PINpassword[1])
                         print('权限:无')
@@ -1164,7 +1100,7 @@ while 1:
                 for a in RJXX:
                     if if_cannot_remove(RJXX[a][0]):
                         continue
-                    zhuomian[len(zhuomian)+1] = [RJXX[a][0], RJXX[a][2], RJXX[a][0], 0]
+                    zhuomian[len(zhuomian)+1] = [RJXX[a][0], RJXX[a][2], 0, RJXX[a][0], 0]
             
             #进入电脑后
             enter_counter += 1
@@ -1181,10 +1117,10 @@ while 1:
                         for j in zhuomian:
                             print('\t', end='')
                             print(f'{j}.', end='')
-                            if zhuomian[j][3] == 0:
+                            if zhuomian[j][4] == 0:
                                 print(zhuomian[j][0])
                             else:
-                                print(zhuomian[j][2])
+                                print(zhuomian[j][3])
                     if JY_influence:
                         sleep(randint(8,12) / 10)
                         print(f'JY瘤懒器:今日开机时间{round(elapsed_time,1)}秒,超过了{randint(80,99)}.{randint(97,99)}%的人')
@@ -1239,8 +1175,9 @@ while 1:
                         if all_instruction == 'how':
                             display_line = True
                             print(f'引号内表示文字, 没有引号则代表参数, 括号内表示提示{HOW}')
-                        elif all_instruction == '更新情况' or all_instruction == 'updates':
+                        elif all_instruction == '更新日志' or all_instruction == 'changelog':
                             print(CHANGELOG)
+                            display_line = True
                         elif all_instruction == '退出登录' or all_instruction == 'logout':
                             done = done2 = False
                             if user_state == 'administrator':
@@ -1258,17 +1195,16 @@ while 1:
                                     display_line = display_desktop = True
                             else:
                                 print(f'你需要应用商店才能下载')
-                        elif all_instruction == '桌面' or all_instruction == 'desktop':
-                            display_desktop = True
+                        elif all_instruction == '桌面' or all_instruction == 'desktop':pass
                         else:
                             Successful = False
                             Wrong_Combo = Wrong_Combo_temp + 1
                     elif instruction_length == 2:
                         if instruction[0] == '打开' or instruction[0] == 'start':
-                            for jj in zhuomian:
-                                if instruction[1] == str(jj):
+                            for sw_num in zhuomian:
+                                if instruction[1] == str(sw_num):
                                     display_line = True
-                                    start_software = zhuomian[jj][0]
+                                    start_software = zhuomian[sw_num][0]
                                     if start_software == '我的电脑':
                                         print('---------------------------------------大分割线---------------------------------------')
                                         print(f'账号名:{username}')
@@ -1303,11 +1239,11 @@ while 1:
                                                         continue
                                                     case '2':
                                                         print('---小分割线---')
-                                                        for jjj in zhuomian:
-                                                            if zhuomian[jjj][3] == 0:
-                                                                print(f'{zhuomian[jjj][0]}占用内存:{NCZH(zhuomian[jjj][1], 3, 2)[1]}{NCZH(zhuomian[jjj][1], 3, 2)[0]}')
+                                                        for num in zhuomian:
+                                                            if zhuomian[num][4] == 0:
+                                                                print(f'{zhuomian[num][0]}占用内存:{NCZH(zhuomian[num][1], 3, 2)[1]}{NCZH(zhuomian[num][1], 3, 2)[0]}')
                                                             else:
-                                                                print(f'{zhuomian[jjj][2]}占用内存:{NCZH(zhuomian[jjj][1], 3, 2)[1]}{NCZH(zhuomian[jjj][1], 3, 2)[0]}')
+                                                                print(f'{zhuomian[num][3]}占用内存:{NCZH(zhuomian[num][1], 3, 2)[1]}{NCZH(zhuomian[num][1], 3, 2)[0]}')
                                                         print(f'总计内存(精细):{NCZH(zhuomianNC, 3, 24)[1]}{NCZH(zhuomianNC, 3, 24)[0]}')
                                                     case _:
                                                         print(Fore.RED + '听不懂您在说什么(仍处于深度操作状态)' + Fore.RESET)
@@ -1350,7 +1286,7 @@ while 1:
                                                     continue
                                                 else:
                                                     URLsplit = URLinput.split(' ')
-                                                    if (lenURLinput := len(URLinput)) == 1:
+                                                    if (lenURLinput := len(URLsplit)) == 1:
                                                         if URLsplit[0] == '/exit':
                                                             break
                                                     elif lenURLinput == 2:
@@ -1358,16 +1294,17 @@ while 1:
                                                             if URLsplit[1] == 'history':
                                                                 browse_history = []
                                                                 print('清空完成')
+                                                continue
                                             if URLinput == 'b' or URLinput == 'Alt F4':
                                                 break
                                             try:
                                                 print('正在加载...\r')
                                                 sleep(randint(5,20)/10)
                                                 last = URLinput.split('.')[-1]
-                                                if last == 'seek':
+                                                if last != 'cn':
                                                     if URLinput in browse_history:
                                                         del browse_history[browse_history.index(URLinput)]
-                                                    browse_history.append(URLinput)
+                                                    # browse_history.append(URLinput)
                                                     real_browse_history.append(URLinput)
                                                     raise
                                                 b = ''
@@ -1382,7 +1319,7 @@ while 1:
                                                     Url = f'{URLinput}.{last}'
                                                 if Url in browse_history:
                                                     del browse_history[browse_history.index(Url)]
-                                                browse_history.append(Url)
+                                                # browse_history.append(Url)
                                                 real_browse_history.append(Url)
                                                 will_code = not(Url in real_browse_history)
                                                 if len(browse_history) > 6:
@@ -1482,18 +1419,17 @@ while 1:
                                         if reply == 'Alt F4':
                                             break
                                         find = []
-                                        for jj in range(0, len(TOTAL_PRINTSTYLE)):
-                                            if reply in TOTAL_PRINTSTYLE[jj] or reply == '':
-                                                find.append(jj)
+                                        for finding in range(0, len(TOTAL_PRINTSTYLE)):
+                                            if reply in TOTAL_PRINTSTYLE[finding] or reply == '':
+                                                find.append(finding)
                                         if len(find) > 0:
                                             for a in range(0, len(find)):
                                                 print(f'{a+1}.{TOTAL_PRINTSTYLE[find[a]]}')
-                                            jj = input('从以上类似结果选一个')
-                                            if jj == 'Alt F4':
+                                            if choice == 'Alt F4':
                                                 break
                                             try:
-                                                jj = int(jj)
-                                                printstyle = TOTAL_PRINTSTYLE[find[jj-1]]
+                                                choice = int(choice)
+                                                printstyle = TOTAL_PRINTSTYLE[find[choice-1]]
                                             except:
                                                 print(Fore.RED + '回答不符合标准' + Fore.RESET)
                                         else:
@@ -1513,12 +1449,12 @@ while 1:
                                                     if msmm == 'Alt F4':
                                                         break
                                                     output_msmm = ''
-                                                    for jj in range(0, len(msmm)):
-                                                        output_msmm += MSMM_ENCODE[msmm[jj]] if msmm[jj] in list(MSMM_ENCODE) else msmm[jj]
-                                                        if not jj == len(msmm)-1:
-                                                            if not msmm[jj] in list(MSMM_ENCODE):
+                                                    for translating in range(0, len(msmm)):
+                                                        output_msmm += MSMM_ENCODE[msmm[translating]] if msmm[translating] in list(MSMM_ENCODE) else msmm[translating]
+                                                        if not translating == len(msmm)-1:
+                                                            if not msmm[translating] in list(MSMM_ENCODE):
                                                                 try:
-                                                                    if not msmm[jj+1] in list(MSMM_ENCODE):
+                                                                    if not msmm[translating+1] in list(MSMM_ENCODE):
                                                                         pass
                                                                     else:
                                                                         output_msmm += '/'
@@ -1532,11 +1468,11 @@ while 1:
                                                     if msmm == 'Alt F4':
                                                         break
                                                     output_msmm = ''
-                                                    for jj in range(0, len(msmm.split('/'))):
+                                                    for translating in range(0, len(msmm.split('/'))):
                                                         try:
-                                                            output_msmm += get_key(MSMM_ENCODE, msmm.split('/')[jj])
+                                                            output_msmm += get_key(MSMM_ENCODE, msmm.split('/')[translating])
                                                         except:
-                                                            output_msmm += msmm.split('/')[jj]
+                                                            output_msmm += msmm.split('/')[translating]
                                                     print(f'解码后:{output_msmm}')
                                                 else:
                                                     break
@@ -1546,7 +1482,7 @@ while 1:
                                         AD()
                                         playing = True
                                         while playing:
-                                            choice = input('''\n1. 开始   \n2. 自定义(基础)   \n3.退出''')
+                                            choice = input('''\n1. 开始  \n2. 自定义(基础)  \n3.退出''')
                                             if choice == 'Alt F4':
                                                 break
                                             elif choice == '1':
@@ -1603,6 +1539,7 @@ while 1:
                                                 break
                                             else:
                                                 pass
+                                    zhuomian[sw_num][2] += randint(1434, 2000)/102400
                                     break
                         elif instruction[0] == '下载' or instruction[0] == 'download':
                             has_shop = False
@@ -1622,12 +1559,12 @@ while 1:
                                 if int(instruction[1]) < len(zhuomian)+1:
                                     display_line = display_desktop = True
                                     jj = int(instruction[1])
-                                    if input(f'确认删除{zhuomian[jj][2]}吗, 直接回车即可删除') == '':
+                                    if input(f'确认删除{zhuomian[jj][3]}吗, 直接回车即可删除') == '':
                                         if if_cannot_remove(zhuomian[jj][0]):
                                             print(Fore.RED + '电脑自带软件无法删除' + Fore.RESET)
                                         else:
                                             recycle_bin.append(zhuomian[jj])
-                                            gnidaol(f'正在卸载{zhuomian[jj][2]}', randint(6, 13) / 8)
+                                            gnidaol(f'正在卸载{zhuomian[jj][3]}', randint(6, 13) / 8)
                                             for jjj in range(jj, len(zhuomian)):
                                                 zhuomian[jjj] = zhuomian[jjj+1]
                                             del zhuomian[len(zhuomian)]
@@ -1645,8 +1582,8 @@ while 1:
                             except:
                                 print(Fore.RED + '序号出错' + Fore.RESET)
                                 continue
-                            zhuomian[target] = [zhuomian[target][0], zhuomian[target][1], instruction[2], zhuomian[target][3]+1]
-                            display_line = display_desktop = True
+                            zhuomian[target] = [zhuomian[target][0], zhuomian[target][1], 0, instruction[2], zhuomian[target][4]+1]
+                            display_line = True
                         elif instruction[0] == '修改PIN码' or instruction[0] == 'modifyPIN':
                             PINpassword = [instruction[1] or 'None', instruction[2] or 'None']
                             print(f'您的新建PIN码:{PINpassword[0]}')
@@ -1691,6 +1628,7 @@ while 1:
                             Successful = False
                             Wrong_Combo = Wrong_Combo_temp + 1
                     if not Successful:
+                        display_desktop == False
                         if printstyle == '正常':
                             print(Fore.RED + '听不懂你的意思, 可以等待作者更新此功能' + Fore.RESET)
                         elif printstyle == '我的世界风':
